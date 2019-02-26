@@ -7,10 +7,10 @@ class App extends Component {
     mirrorText: ""
   };
 
-  mirrorTextChange = value => {
-    this.setState(() => ({
-      mirrorText: value
-    }));
+  mirrorTextChange = event => {
+    this.setState({
+      mirrorText: event.target.value
+    });
   };
 
   render() {
@@ -25,7 +25,7 @@ class App extends Component {
             type="text"
             placeholder="Say Something"
             value={this.state.mirrorText}
-            onChange={event => this.mirrorTextChange(event.target.value)}
+            onChange={this.mirrorTextChange}
           />
           <p className="echo">Echo:</p>
           <p>{this.state.mirrorText}</p>
