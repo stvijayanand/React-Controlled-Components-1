@@ -1,8 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  state = {
+    mirrorText: ""
+  };
+
+  mirrorTextChange = value => {
+    this.setState(() => ({
+      mirrorText: value
+    }));
+  };
+
   render() {
     return (
       <div className="App">
@@ -11,9 +21,14 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <div className="container">
-          <input type="text" placeholder="Say Something" />
+          <input
+            type="text"
+            placeholder="Say Something"
+            value={this.state.mirrorText}
+            onChange={event => this.mirrorTextChange(event.target.value)}
+          />
           <p className="echo">Echo:</p>
-          <p>This should mirror the text you typed into the input field.</p>
+          <p>{this.state.mirrorText}</p>
         </div>
       </div>
     );
